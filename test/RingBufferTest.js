@@ -1,31 +1,30 @@
 const test = require('ava');
 const RingBuffer = require('../lib/RingBuffer');
 
-
 test("empty", t => {
   const ring = new RingBuffer(5);
+
   t.is(ring.empty(), true);
 });
 
 test("not empty", t => {
   const ring = new RingBuffer(5);
-
   ring.push(1);
+
   t.is(ring.empty(), false);
 });
 
 test("get last added", t => {
   const ring = new RingBuffer(5);
-
   ring.push(1);
   ring.push(2);
   ring.push(3);
+
   t.is(ring.last(), 3);
 });
 
 test("walker returns in right order", t => {
   const ring = new RingBuffer(5);
-
   ring.push(1);
   ring.push(2);
   ring.push(3);
@@ -50,7 +49,6 @@ test("walker returns in right order", t => {
 
 test("walker returns only valid values", t => {
   const ring = new RingBuffer(10);
-
   ring.push(1);
   ring.push(2);
   ring.push(3);
